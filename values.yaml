@@ -1,0 +1,26 @@
+replicaCount: 2
+image:
+  repository: nginx
+  tag: stable
+  pullPolicy: IfNotPresent
+
+resources:
+  limits:
+    cpu: 500m
+    memory: 30Gi
+  requests:
+    cpu: 100m
+    memory: 30Gi
+
+ephemeralStorage:
+  size: 512Gi
+  mountPath: /data
+
+persistentVolume:
+  size: 5Gi
+  storageClass: multi-zone
+
+config:
+  environment: <ENV>
+  dataDir: /data
+  domain: <DOMAIN>
